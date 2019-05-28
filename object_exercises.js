@@ -1,3 +1,5 @@
+////////// INHERITANCE EXERCISE ////////////
+
 // function Parent (firstName, lastName, eyeColor, hairColor) {
 //     this.firstName = firstName;
 //     this.lastName = lastName;
@@ -17,22 +19,7 @@
 // console.log(mom);
 // console.log(daughter);
 
-// function Person(name) { 
-//     this.name = name; 
-//     this.friends = []; 
-// } 
-
-// Person.prototype.addFriend = function(friend) { 
-//     this.friends.push(friend); 
-// }; 
-
-// Person.prototype.createGreeting = function(other) { 
-//     return 'Yo ' + other.name + '! from ' + this.name + '.'; 
-// };
-
-// Person.prototype.greet = function(other) {
-//     console.log(this.createGreeting(other)); 
-// };
+////////// PERSON EXERCISE ////////////
 
 class Person {
     constructor (name) {
@@ -41,8 +28,6 @@ class Person {
     }
     addFriend(friend) {
         this.friends.push(friend)
-        console.log('helloooooo');
-        //console.log(this.friends);
     }
     createGreeting(other) {
         console.log(`Yo ${other.name}! from ${this.name}.`);
@@ -51,13 +36,24 @@ class Person {
         this.createGreeting(other);
     }
     lazyGreet(other) {
-        setTimeout(()=> {this.greet(other)}, 2000);
+        setTimeout(()=> {
+            this.greet(other)
+        }, 2000);
+    }
+    createGreetingforFriends() {
+        this.friends.map(friend => {
+            this.createGreeting(friend)
+        });
     }
 }
 
-test = new Person('Eli');
-test2 = new Person('RJ');
+const name1 = new Person('Eli');
+const name2 = new Person('RJ');
+const name3 = new Person('JC');
 //test.addFriend(test2);
 //test.createGreeting(test2);
 //test.greet(test2);
-test.lazyGreet(test2);
+//name1.lazyGreet(name2);
+name1.addFriend(name2);
+name1.addFriend(name3);
+name1.createGreetingforFriends();
